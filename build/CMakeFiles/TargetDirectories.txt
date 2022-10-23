@@ -1,3 +1,0 @@
-/home/matt/Documents/code/cpp/shadertoy/build/CMakeFiles/shadertoy.dir
-/home/matt/Documents/code/cpp/shadertoy/build/CMakeFiles/edit_cache.dir
-/home/matt/Documents/code/cpp/shadertoy/build/CMakeFiles/rebuild_cache.dir
