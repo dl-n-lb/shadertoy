@@ -11,5 +11,5 @@ add_compile_options(-O3)
 include_directories(common_cxx/)
 include_directories(include/)
 
-add_executable(shadertoy source/main.cxx)
+add_executable(shadertoy include/shadertoy_app.cxx source/main.cxx)
 target_link_libraries(shadertoy PRIVATE glfw)
