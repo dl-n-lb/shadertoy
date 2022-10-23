@@ -48,6 +48,7 @@ i32 main(i32, char**) {
   glfwSetKeyCallback(win, key_callback);
 
   while (!glfwWindowShouldClose(win)) {
+    glfwPollEvents();
     glfwSwapBuffers(win);
   }
   
