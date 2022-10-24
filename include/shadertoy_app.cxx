@@ -26,9 +26,23 @@ ShadertoyApp::ShadertoyApp(i32 width, i32 height, const char* title) {
   gladLoadGL(glfwGetProcAddress);
   
   glfwSetKeyCallback(_win, key_callback);
+  
+  IMGUI_CHECKVERSION();
+
+  ImGui::CreateContext();
+  ImGuiIO& io = ImGui::GetIO(); (void)io;
+  
+  ImGui::StyleColorsDark();
+  
+  ImGui_ImplGlfw_InitForOpenGL(_win, true);
+  ImGui_ImplOpenGL3_Init("#version 460");
 }
 
 ShadertoyApp::~ShadertoyApp() {
+  ImGui_ImplOpenGL3_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
+  
   glfwDestroyWindow(_win);
   glfwTerminate();
 }
@@ -45,8 +59,27 @@ void ShadertoyApp::key_callback(GLFWwindow* win, i32 key, i32 scancode,
 }
 
 void ShadertoyApp::run() {
+bool show_demo_window = true;
   while(!glfwWindowShouldClose(_win)) {
     glfwPollEvents();
+    
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+    
+    ImGui::ShowDemoWindow(&show_demo_window);
+    
+    ImGui::Render();
+    
+    i32 dw, dh;
+    glfwGetFramebufferSize(_win, &dw, &dh);
+    
+    glViewport(0, 0, dw, dh);
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    
     glfwSwapBuffers(_win);
   }
 }

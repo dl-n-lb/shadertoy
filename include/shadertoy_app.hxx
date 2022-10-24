@@ -2,9 +2,12 @@
 #define SHADERTOY_APP_HXX
 
 #include <glad/gl.h>
-
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
+
+#include <imgui.h>
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
 
 #include "types/type_alias.hxx"
 
