@@ -15,6 +15,7 @@ add_executable(shadertoy
   include/imgui/imgui_impl_opengl3.cpp
   include/imgui/imgui_impl_glfw.cpp
   source/shadertoy_app.cxx 
+  source/shader.cxx 
   source/main.cxx
 )
 target_link_libraries(shadertoy PRIVATE glfw imgui)
